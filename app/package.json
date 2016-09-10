@@ -1,0 +1,43 @@
+{
+  "name": "SimpleStockViewer",
+  "version": "1.0.0",
+  "description": "Allows Users to easily get results from the stock market",
+  "homepage": "https://github.com/Rogue-Hydra/simpleStockViewer",
+  "author": "Rogue-Hydra <mail@rogue-hydra.tech>",
+  "license": "MIT",
+  "main": "main.js",
+  "directories": {
+    "output": "../dist"
+  },
+  "scripts": {
+    "pack": "build --dir",
+    "dist": "build -l deb rpm tar.gz",
+    "start": "electron ./main.js",
+    "build-osx": "electron-packager ./ 'Simple Stock Viewer' --platform=darwin --arch=x64 --overwrite --tmpdir=false --ignore='.idea' --ignore'readme.md' --ignore='projectMovies.iml' --ignore='Builds' --overwrite --out='./Builds' --asar"
+  },
+  "build": {
+    "appId": "simplestockviewer",
+    "category": "public.app-category.business",
+    "compression": "maximum",
+    "copyright": "MIT",
+    "win": {
+      "iconUrl": "",
+      "msi": "true"
+    },
+    "linux": {
+      "category": "Utility",
+      "synopsis": "Quickly view stock prices"
+    }
+  },
+  "devDependencies": {
+    "devtron": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "electron-packager": "latest"
+  },
+  "dependencies": {
+    "cheerio": "latest",
+    "jquery": "latest",
+    "request": "latest"
+  }
+}
