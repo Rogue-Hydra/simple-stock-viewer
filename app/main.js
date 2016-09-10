@@ -1,5 +1,4 @@
 const {app, BrowserWindow} = require('electron');
-require('electron-debug');
 var ipcMain = require('electron').ipcMain;
 var win = null;
 
@@ -11,7 +10,6 @@ app.on('ready', function () {
     });
 
     win.setMenu(null);
-    win.openDevTools();
     win.loadURL('file://' + __dirname + '/index.html');
 
     win.on('closed', function () {
