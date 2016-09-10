@@ -1,6 +1,6 @@
 {
   "name": "SimpleStockViewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allows Users to easily get results from the stock market",
   "homepage": "https://github.com/Rogue-Hydra/simpleStockViewer",
   "author": "Rogue-Hydra <mail@rogue-hydra.tech>",
@@ -12,8 +12,7 @@
   "scripts": {
     "pack": "build --dir",
     "dist": "build -l deb rpm tar.gz",
-    "start": "electron ./main.js",
-    "build-osx": "electron-packager ./ 'Simple Stock Viewer' --platform=darwin --arch=x64 --overwrite --tmpdir=false --ignore='.idea' --ignore'readme.md' --ignore='projectMovies.iml' --ignore='Builds' --overwrite --out='./Builds' --asar"
+    "start": "electron ./main.js"
   },
   "build": {
     "appId": "simplestockviewer",
