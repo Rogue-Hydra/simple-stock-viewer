@@ -11,9 +11,9 @@ To use simple stock viewer you just enter a stock you want to monitor e.g. LON:B
 <h2>Downloads</h2>
 
 <h3>Linux</h3>
-Debian/Ubuntu: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.deb">Download</a>
-Fedora/openSUSE: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.rpm">Download</a>
-tar.gz: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.tar.gz">Download</a>
+<p>Debian/Ubuntu: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.deb">Download</a></p>
+<p>Fedora/openSUSE: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.rpm">Download</a></p>
+<p>tar.gz: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.tar.gz">Download</a></p>
 
 <h2>License</h2>
 https://opensource.org/licenses/MIT
