@@ -1,0 +1,11 @@
+#Ignore irrelevant files and
+
+#Jetbrains Intellij
+.idea/
+Simple Stock Viewer.iml
+
+#npm
+app/node_modules/
+
+#src from build
+/dist/linux-unpacked
