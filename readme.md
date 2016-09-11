@@ -11,9 +11,9 @@ To use simple stock viewer you just search for a stock you want to monitor e.g. 
 <h2>Downloads</h2>
 
 <h3>Linux</h3>
-<p>Debian/Ubuntu: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.deb">Download</a></p>
-<p>Fedora/openSUSE: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.rpm">Download</a></p>
-<p>Raw Binary<a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.1.tar.gz">Download</a></p>
+<p>Debian/Ubuntu: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.2.deb">Download</a></p>
+<p>Fedora/openSUSE: <a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.2.rpm">Download</a></p>
+<p>Raw Binary<a href="https://github.com/Rogue-Hydra/simple-stock-viewer/raw/master/dist/SimpleStockViewer-1.0.2.tar.gz">Download</a></p>
 
 <h2>Build from source</h2>
 <p>Build:</p>

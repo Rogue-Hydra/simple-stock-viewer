@@ -1,11 +1,15 @@
 {
   "name": "SimpleStockViewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Allows Users to easily get results from the stock market",
   "homepage": "https://github.com/Rogue-Hydra/simpleStockViewer",
   "author": "Rogue-Hydra <mail@rogue-hydra.tech>",
   "license": "MIT",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rogue-hydra/simple-stock-viewer.git"
+  },
   "directories": {
     "output": "../dist"
   },
