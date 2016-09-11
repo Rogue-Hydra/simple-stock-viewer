@@ -7,6 +7,7 @@ var companiesWanted = [];
 var $search = $('#search');
 var $error = $('.error');
 var $itemToRemove = $('.item-to-remove');
+var isRunning;
 
 
 $search.keyup(function (e) {
@@ -17,20 +18,21 @@ $search.keyup(function (e) {
             item = $active.attr('data-symbol');
         }
         companiesWanted = $.grep(companiesWanted, function (value) {
+            if (value == item) {
+                $error.text("We're already getting data for this stock").fadeIn(500);
+                setTimeout(500);
+                $error.fadeOut(2000);
+            }
             return value != item;
         });
         if ($.inArray(item, companiesWanted)) {
             companiesWanted.push(item);
-            console.log('pushed');
-            console.log(companiesWanted);
-        } else {
-            $error.text("We're already getting data for this stock").fadeIn(500);
-            setTimeout(500);
-            $error.fadeOut(2000);
         }
         $('.search-results').hide();
         $(this).val('');
-        getData(companiesWanted);
+        if (!isRunning) {
+            getSingleStock(item);
+        }
     } else if (e.keyCode == 40) {
         if ($active.length == 0) {
             $('.search-results p:first-child').addClass('active');
@@ -92,7 +94,7 @@ function displayQuery(query) {
     })
 }
 
-function getData(input) {
+function getMultipleStocks(input) {
     for (var i = 0; i < input.length; i++) {
         if (!$itemToRemove.is(':empty')) {
             removeValues($itemToRemove);
@@ -105,7 +107,6 @@ function getData(input) {
                 if (resp['statusMessage'] !== 'Bad Request') {
                     body = JSON.parse(body);
                     body = body['query']['results']['quote'];
-                    console.log(body);
                     newPrice(body);
                 } else {
                     var itemToRemove = resp['request']['path'].replace('/finance/info?client=ig&q=', '');
@@ -119,15 +120,38 @@ function getData(input) {
                 $error.text('Sorry, There was an error with the request. Try again or contact the developer');
             }
         });
-        setTimeout(1000);
     }
+    isRunning = false;
+}
+function getSingleStock(input) {
+    var url = "http://query.yahooapis.com/v1/public/yql?q=env 'store://datatables.org/alltableswithkeys';select * from yahoo.finance.quotes where symbol in (";
+    url += '"' + input + '")&format=json';
+    request(url, {timeout: 1500}, function (err, resp, body) {
+        var $error = $error;
+        if (!err) {
+            if (resp['statusMessage'] !== 'Bad Request') {
+                body = JSON.parse(body);
+                body = body['query']['results']['quote'];
+                newPrice(body);
+            } else {
+                var itemToRemove = resp['request']['path'].replace('/finance/info?client=ig&q=', '');
+                $itemToRemove.text(itemToRemove);
+            }
+        } else if (err.code === 'ETIMEDOUT') {
+            $error.css({display: 'block'});
+            $error.text('Your request has timed-out, is google up?');
+        } else {
+            $error.css({display: 'block'});
+            $error.text('Sorry, There was an error with the request. Try again or contact the developer');
+        }
+    });
 }
 
 var lastprice = [];
 var lastItem = false;
 
 function EncodeEntities(rawStr) {
-    var encodedStr = rawStr.replace(/[\u00A0-\u9999<>^\&]/gim, function (i) {
+    var encodedStr = rawStr.replace(/[\u00A0-\u9999<>.^\&]/gim, function (i) {
         return i.charCodeAt(0);
     });
 
@@ -139,7 +163,7 @@ function newPrice(arr) {
     var $lastElement = $('.wrapper');
     var currentPrice = arr['LastTradePriceOnly'],
         companyName = arr['Name'],
-        companyId = EncodeEntities(arr['symbol']) + arr['StockExchange'],
+        companyId = EncodeEntities(arr['symbol']) + EncodeEntities(arr['StockExchange']),
         $history = $('#priceHistory' + companyId),
         $company = $('#company' + companyId),
         wrap = document.createElement('span'),
@@ -147,7 +171,6 @@ function newPrice(arr) {
         textNode;
 
     if ($('#' + companyId).length === 0) {
-
         if (lastItem) {
             lastItem = false;
             $lastElement.append('<div class="stocks" id="' + companyId + '"><h3 class="company-title-alt" id="company' + companyId + '"></h3><div class="the-price" id="price' + companyId + '"></div><div class="up-down" id="priceHistory' + companyId + '">-</div></div>');
@@ -204,9 +227,10 @@ function newPrice(arr) {
 }
 setInterval(function () {
     if (companiesWanted.length > 0) {
-        getData(companiesWanted);
+        isRunning = true;
+        getMultipleStocks(companiesWanted);
     }
-}, 10000);
+}, 6000);
 
 $('#minimize').click(function () {
     ipcRenderer.send('minimize');
