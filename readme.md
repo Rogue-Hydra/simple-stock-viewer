@@ -18,8 +18,8 @@ To use simple stock viewer you just search for a stock you want to monitor e.g. 
 <h2>Build from source</h2>
 <p>Build:</p>
 ```
-git clone https://github.com/Rogue-Hydra/simple-stock-viewer.git /your/directory</br>
-cd /your/directory/app</br>
+git clone https://github.com/Rogue-Hydra/simple-stock-viewer.git /your/directory
+cd /your/directory/app
 npm install
 ```
 
