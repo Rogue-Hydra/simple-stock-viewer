@@ -23,8 +23,8 @@ cd /your/directory/app
 npm install
 ```
 
-<p>Run</p>
-`npm start`
+<p>Run:</p>
+```npm start```
 
 <h2>License</h2>
 https://opensource.org/licenses/MIT
